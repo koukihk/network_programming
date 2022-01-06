@@ -1,0 +1,3 @@
+D:/CLionProjects/proxy/cmake-build-debug/CMakeFiles/proxy.dir
+D:/CLionProjects/proxy/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/CLionProjects/proxy/cmake-build-debug/CMakeFiles/rebuild_cache.dir
