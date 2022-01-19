@@ -14,14 +14,14 @@ bool CreateClientSocket()
 	BOOL bRet = FALSE;
 	do
 	{
-		//´´½¨Ì×½Ó×Ö
+		//åˆ›å»ºå¥—æ¥å­—
 		SOCKET client = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (INVALID_SOCKET == client)
 		{
 			SetLastError(WSAGetLastError());
 			break;
 		}
-		//Á¬½Ó·şÎñÆ÷sockeµØÖ·
+		//è¿æ¥æœåŠ¡å™¨sockeåœ°å€
 		sockaddr_in server_addr = { 0 };
 		server_addr.sin_family = AF_INET;
 		server_addr.sin_port = htons(23); 
@@ -34,26 +34,23 @@ bool CreateClientSocket()
 		}
 
 
-		//·¢ËÍÊı¾İ
+		//å‘é€æ•°æ®
 
 		char sz_send_info[1024] = { 0 };
 		int iRet = 0;
 		while (1)
 		{
 			printf("----------------\n");
-			printf("ÊäÈëÃüÁî£º \n");
+			printf("è¾“å…¥å‘½ä»¤ï¼š \n");
 			std::cin.getline(sz_send_info,sizeof(sz_send_info));
-			//std::cin >> sz_send_info;
-			//scanf("%s",sz_send_info);
-			//gets(sz_send_info);
 			iRet=send(client, (char*)sz_send_info, sizeof(sz_send_info), 0);
 			if (iRet!=SOCKET_ERROR)
 			{
-				printf("ÒÑ·¢ËÍ %s\n",sz_send_info);
+				printf("å·²å‘é€ %s\n",sz_send_info);
 			}
 			else
 			{
-				printf("·¢ËÍÊ§°ÜÁË\n");
+				printf("å‘é€å¤±è´¥äº†\n");
 			}
 		}
 
@@ -71,28 +68,28 @@ int main()
 	WSADATA wsaData;
 	int err;
 	memset(ip,'\0',sizeof(ip));
-	printf("ÇëÊäÈëÖ÷»úµØÖ·£¨Ê¹ÓÃ¶Ë¿ÚºÅÎª23£©£º \n");
+	printf("è¯·è¾“å…¥ä¸»æœºåœ°å€ï¼ˆä½¿ç”¨ç«¯å£å·ä¸º23ï¼‰ï¼š \n");
 	scanf("%s",ip);
 	wVersionRequested = MAKEWORD(2, 2);
 
 	err = WSAStartup(wVersionRequested, &wsaData);
 	if (err != 0) {
 
-		printf("³ö´íÁË£¬´íÎóÂëÎª: %d\n", err);
+		printf("å‡ºé”™äº†ï¼Œé”™è¯¯ç ä¸º: %d\n", err);
 		return -1;
 	}
 
 
 	if (LOBYTE(wsaData.wVersion) != 2 || HIBYTE(wsaData.wVersion) != 2) {
-		//Ã»ÓĞºÏÊÊµÄ°æ±¾ºÅ
-		printf("Ã»ÓĞºÏÊÊµÄ°æ±¾ºÅ\n");
+		//æ²¡æœ‰åˆé€‚çš„ç‰ˆæœ¬å·
+		printf("æ²¡æœ‰åˆé€‚çš„ç‰ˆæœ¬å·\n");
 		WSACleanup();
 		return -1;
 	}
 
 	if (FALSE == CreateClientSocket())
 	{
-		printf("³ö´íÁË£¬´íÎóÂëÎª: %d\n", GetLastError());
+		printf("å‡ºé”™äº†ï¼Œé”™è¯¯ç ä¸º: %d\n", GetLastError());
 		return -1;
 	}
 	system("pause");
