@@ -33,3 +33,7 @@ link_libraries(ws2_32 wsock32)
 
 发送电子邮件:soruku@foxmail.com（不接受以应付作业为来意的询问）
 
+### LICENSE
+
+MIT License
+
