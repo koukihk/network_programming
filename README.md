@@ -16,7 +16,7 @@ LIBS += -lWs2_32
 link_libraries(ws2_32 wsock32)
 ```
 
-#### Dev-C++等
+#### Dev-C++
 
 编译器 -> 编译器配置集 -> 编译时加入下列选项
 
